@@ -10,7 +10,7 @@ function App() {
     setButtonRegister(!buttonRegister);
   };
   return (
-    <div>
+    <div className="d-container">
       <Header />
       {buttonRegister ? <Form handleClick={ handleClick } />
         : <Button text="Cadastrar Nova Senha" handleClick={ handleClick } />}

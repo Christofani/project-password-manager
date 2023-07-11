@@ -1,3 +1,5 @@
+import './index.css';
+
 type ButtonProps = {
   handleClick: () => void;
   text: string;

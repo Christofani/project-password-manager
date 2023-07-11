@@ -5,3 +5,8 @@
 .invalid-password-check {
   color: #f58989;
 }
+
+.d-container {
+  display: flex;
+  flex-direction: column;
+}
