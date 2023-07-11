@@ -1,29 +1,39 @@
+import Button from '../ButtonGo';
+import Input from '../Input';
 import './index.css';
 
-function Form() {
+type FormProps = {
+  handleClick: () => void;
+};
+
+function Form({ handleClick }: FormProps) {
   return (
     <div className="div-container">
       <form className="form-container">
-        <label>
-          Nome do serviço
-          <input type="text" />
-        </label>
-        <label>
-          Login
-          <input type="text" />
-        </label>
-        <label>
-          Senha
-          <input type="password" />
-        </label>
-        <label>
-          URL
-          <input type="text" />
-        </label>
+        <Input
+          id="name"
+          label="Nome do Serviço"
+          type="text"
+        />
+        <Input
+          id="login"
+          label="Login"
+          type="text"
+        />
+        <Input
+          id="senha"
+          label="Senha"
+          type="password"
+        />
+        <Input
+          id="url"
+          label="URL"
+          type="text"
+        />
       </form>
       <section className="section-container">
-        <button className="button-cadastrar">Cadastrar</button>
-        <button className="button-cancelar">Cancelar</button>
+        <Button text="Cadastrar" handleClick={ handleClick } />
+        <Button text="Cancelar" handleClick={ handleClick } />
       </section>
     </div>
   );
