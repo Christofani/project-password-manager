@@ -1,4 +1,4 @@
-import './index.css';
+import './Button.css';
 
 type ButtonProps = {
   handleClick: () => void;
