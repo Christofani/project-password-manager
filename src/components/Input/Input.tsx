@@ -11,6 +11,7 @@ function Input({ label, id, type, value, handleChange }: InputProps) {
     <label htmlFor={ id }>
       { label }
       <input
+        className="form-control form-control-sm"
         id={ id }
         type={ type }
         value={ value }

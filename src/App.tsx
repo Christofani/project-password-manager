@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Button from './components/ButtonGo/Button';
+import Validation from './components/ValidationPassword/Validation';
 import Header from './components/Header/Header';
 import Form from './components/Formulario/Form';
 import './App.css';
@@ -10,22 +11,19 @@ const initialFormValues = {
   senha: '',
   url: '',
 };
-
 function App() {
-  const [validate, setValidade] = useState(false);
+  const [validate, setValidate] = useState(false);
   const [formValues, setFormValues] = useState(initialFormValues);
   const [buttonRegister, setButtonRegister] = useState(false);
+  const { name, login, senha, url } = formValues;
   const handleClick = () => {
     setButtonRegister(!buttonRegister);
   };
+  const hasValidLength = senha.length >= 8 && senha.length <= 16;
+  const hasNumbers = /[0-9]/.test(senha);
+  const hasLetters = /[a-zA-Z]/.test(senha);
+  const hasSpecialCharacters = /[!@#$%^&*(),.?":{}|<>]/.test(senha);
   const enableButton = () => {
-    const { senha } = formValues;
-
-    const hasValidLength = senha.length >= 8 && senha.length <= 16;
-    const hasNumbers = /[0-9]/.test(senha);
-    const hasLetters = /[a-zA-Z]/.test(senha);
-    const hasSpecialCharacters = /[!@#$%^&*(),.?":{}|<>]/.test(senha);
-
     return (
       Object.values(formValues).every((value) => value !== '')
       && hasValidLength
@@ -41,9 +39,9 @@ function App() {
       [id]: value,
     });
     if (enableButton()) {
-      setValidade(true);
+      setValidate(true);
     } else {
-      setValidade(false);
+      setValidate(false);
     }
   };
 
@@ -53,17 +51,40 @@ function App() {
       <Header />
       {
       buttonRegister
-        ? <Form
-            handleChange={ (event) => handleChange(event) }
-            handleClick={ handleClick }
-            formValues={ formValues }
-            disabled={ !validate }
-        />
+        ? (
+          <section className="validation-container">
+            <Form
+              handleChange={ (event) => handleChange(event) }
+              handleClick={ handleClick }
+              formValues={ formValues }
+              disabled={ !validate }
+            />
+            <section className="child-container">
+              <Validation
+                validacao={ senha.length >= 8 }
+                conteudo="Possuir 8 ou mais caracteres"
+              />
+              <Validation
+                validacao={ senha.length <= 16 }
+                conteudo="Possuir até 16 caracteres"
+              />
+              <Validation
+                validacao={ (hasNumbers && hasLetters) }
+                conteudo="Possuir letras e números"
+              />
+              <Validation
+                validacao={ hasSpecialCharacters }
+                conteudo="Possuir algum caractere especial"
+              />
+            </section>
+          </section>
+        )
         : <Button
             text="Cadastrar Nova Senha"
             handleClick={ handleClick }
         />
         }
+
     </div>
   );
 }
