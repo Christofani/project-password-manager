@@ -75,9 +75,9 @@ function Form(
         />
         <section className="section-container">
           <Button text="Cadastrar" disabled={ disabled } />
-          <Button text="Cancelar" handleClick={ handleClick } />
         </section>
       </form>
+      <Button text="Cancelar" handleClick={ handleClick } />
     </div>
   );
 }

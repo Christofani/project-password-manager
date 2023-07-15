@@ -12,7 +12,6 @@ type ButtonProps = {
 
 function Button({ handleClick = undefined,
   text, disabled = false, datatestid = undefined, hidePassword = false }: ButtonProps) {
-  console.log(hidePassword);
   return (
     <button
       data-testid={ datatestid }

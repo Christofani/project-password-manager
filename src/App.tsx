@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
+import Swal from 'sweetalert2';
 import Button from './components/ButtonGo/Button';
 import Validation from './components/ValidationPassword/Validation';
 import Header from './components/Header/Header';
@@ -59,6 +60,11 @@ function App() {
     setButtonRegister(false);
     setFormValues(initialFormValues);
     setValidate(false);
+    Swal.fire({
+      icon: 'success',
+      text: 'Serviço cadastrado com sucesso!',
+      timer: 1500,
+    });
   };
 
   const handleDelete = (itemId: string) => {
