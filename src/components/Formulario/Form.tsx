@@ -1,3 +1,4 @@
+import React from 'react';
 import Button from '../ButtonGo/Button';
 import Input from '../Input/Input';
 
@@ -10,17 +11,20 @@ type FormValuesProps = {
   url: string;
 };
 type FormProps = {
+  handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   handleClick: () => void;
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   formValues: FormValuesProps;
-  disabled?: boolean;
+  disabled: boolean;
 };
 
-function Form({ handleClick, handleChange, formValues, disabled = false }: FormProps) {
+function Form(
+  { handleClick, handleChange, formValues, disabled = false, handleSubmit }: FormProps,
+) {
   const { name, login, senha, url } = formValues;
   return (
     <div className="div-container">
-      <form className="form-container">
+      <form onSubmit={ handleSubmit } className="form-container">
         <Input
           id="name"
           label="Nome do Serviço"
@@ -49,11 +53,11 @@ function Form({ handleClick, handleChange, formValues, disabled = false }: FormP
           handleChange={ (event) => handleChange(event) }
           value={ url }
         />
+        <section className="section-container">
+          <Button text="Cadastrar" disabled={ disabled } />
+          <Button text="Cancelar" handleClick={ handleClick } />
+        </section>
       </form>
-      <section className="section-container">
-        <Button text="Cadastrar" handleClick={ handleClick } disabled={ disabled } />
-        <Button text="Cancelar" handleClick={ handleClick } />
-      </section>
     </div>
   );
 }

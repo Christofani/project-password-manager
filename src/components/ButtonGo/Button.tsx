@@ -1,12 +1,12 @@
 import './Button.css';
 
 type ButtonProps = {
-  handleClick: () => void;
+  handleClick?: () => void;
   text: string;
   disabled?: boolean;
 };
 
-function Button({ handleClick, text, disabled = false }: ButtonProps) {
+function Button({ handleClick = undefined, text, disabled = false }: ButtonProps) {
   return (
     <button
       onClick={ handleClick }

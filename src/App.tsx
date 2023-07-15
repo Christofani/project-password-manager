@@ -1,9 +1,12 @@
 import { useState } from 'react';
+import { nanoid } from 'nanoid';
 import Button from './components/ButtonGo/Button';
 import Validation from './components/ValidationPassword/Validation';
 import Header from './components/Header/Header';
 import Form from './components/Formulario/Form';
+import FormResults from './components/FormResults/FormResults';
 import './App.css';
+import { FormValuesProps, FormValuesPropsWithId } from './types';
 
 const initialFormValues = {
   name: '',
@@ -12,10 +15,12 @@ const initialFormValues = {
   url: '',
 };
 function App() {
+  const [submit, setSubmit] = useState<FormValuesPropsWithId[]
+  | FormValuesProps>([] as FormValuesPropsWithId[] | FormValuesProps);
   const [validate, setValidate] = useState(false);
   const [formValues, setFormValues] = useState(initialFormValues);
   const [buttonRegister, setButtonRegister] = useState(false);
-  const { name, login, senha, url } = formValues;
+  const { senha } = formValues;
   const handleClick = () => {
     setButtonRegister(!buttonRegister);
   };
@@ -45,7 +50,16 @@ function App() {
     }
   };
 
-  console.log(formValues);
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSubmit([...submit, { ...formValues, id: nanoid() }]);
+    console.log(submit);
+    setButtonRegister(false);
+    setFormValues(initialFormValues);
+    setValidate(false);
+  };
+
+  // console.log(formValues);
   return (
     <div className="d-container">
       <Header />
@@ -54,6 +68,7 @@ function App() {
         ? (
           <section className="validation-container">
             <Form
+              handleSubmit={ handleSubmit }
               handleChange={ (event) => handleChange(event) }
               handleClick={ handleClick }
               formValues={ formValues }
@@ -84,7 +99,11 @@ function App() {
             handleClick={ handleClick }
         />
         }
-
+      {
+        Array.isArray(submit) && submit.length === 0
+          ? <p>nenhuma senha cadastrada</p>
+          : <FormResults submit={ Array.isArray(submit) ? submit : [submit] } />
+      }
     </div>
   );
 }
