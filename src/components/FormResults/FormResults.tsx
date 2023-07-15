@@ -5,16 +5,21 @@ import './FormResults.css';
 type ResultProps = {
   submit: FormValuesPropsWithId[];
   handleDelete: (itemId: string) => void;
+  hidePassword: boolean;
 };
 
-function FormResults({ submit, handleDelete }: ResultProps) {
+function FormResults({ submit, handleDelete, hidePassword }: ResultProps) {
   return (
     <div>
       {submit.map((item) => (
         <div className="div-form" key={ item.id }>
           <a target="_blank" href={ item.url } rel="noreferrer">{item.name}</a>
           <p>{item.login}</p>
-          <p>{item.senha}</p>
+          <p>
+            { hidePassword
+              ? '******'
+              : item.senha}
+          </p>
           <Button
             datatestid="remove-btn"
             text="X"

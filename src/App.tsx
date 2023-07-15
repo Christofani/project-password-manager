@@ -7,6 +7,7 @@ import Form from './components/Formulario/Form';
 import FormResults from './components/FormResults/FormResults';
 import './App.css';
 import { FormValuesProps, FormValuesPropsWithId } from './types';
+import Input from './components/Input/Input';
 
 const initialFormValues = {
   name: '',
@@ -15,6 +16,7 @@ const initialFormValues = {
   url: '',
 };
 function App() {
+  const [hidePassword, setHidePassword] = useState(false);
   const [submit, setSubmit] = useState<FormValuesPropsWithId[] | FormValuesProps[]>([]);
   const [validate, setValidate] = useState(false);
   const [formValues, setFormValues] = useState(initialFormValues);
@@ -65,6 +67,10 @@ function App() {
     )));
   };
 
+  const handlePassword = () => {
+    setHidePassword(!hidePassword);
+  };
+
   // console.log(formValues);
   return (
     <div className="d-container">
@@ -108,10 +114,22 @@ function App() {
       {
         Array.isArray(submit) && submit.length === 0
           ? <p className="parag">nenhuma senha cadastrada</p>
-          : <FormResults
-              handleDelete={ handleDelete }
-              submit={ Array.isArray(submit) ? submit : [submit] }
-          />
+          : (
+            <div className="form-result-div">
+              <FormResults
+                handleDelete={ handleDelete }
+                submit={ Array.isArray(submit) ? submit : [submit] }
+                hidePassword={ hidePassword }
+              />
+              <Input
+                id="hide"
+                label="Esconder senhas"
+                type="checkbox"
+                checked={ hidePassword }
+                handleChange={ handlePassword }
+              />
+            </div>
+          )
       }
     </div>
   );
