@@ -15,11 +15,11 @@ const initialFormValues = {
   url: '',
 };
 function App() {
-  const [submit, setSubmit] = useState<FormValuesPropsWithId[]
-  | FormValuesProps>([] as FormValuesPropsWithId[] | FormValuesProps);
+  const [submit, setSubmit] = useState<FormValuesPropsWithId[] | FormValuesProps[]>([]);
   const [validate, setValidate] = useState(false);
   const [formValues, setFormValues] = useState(initialFormValues);
   const [buttonRegister, setButtonRegister] = useState(false);
+  // const [delete, setDelete] = useState();
   const { senha } = formValues;
   const handleClick = () => {
     setButtonRegister(!buttonRegister);
@@ -57,6 +57,12 @@ function App() {
     setButtonRegister(false);
     setFormValues(initialFormValues);
     setValidate(false);
+  };
+
+  const handleDelete = (itemId: string) => {
+    setSubmit(submit.filter((serv) => (
+      itemId !== serv.id
+    )));
   };
 
   // console.log(formValues);
@@ -101,8 +107,11 @@ function App() {
         }
       {
         Array.isArray(submit) && submit.length === 0
-          ? <p>nenhuma senha cadastrada</p>
-          : <FormResults submit={ Array.isArray(submit) ? submit : [submit] } />
+          ? <p className="parag">nenhuma senha cadastrada</p>
+          : <FormResults
+              handleDelete={ handleDelete }
+              submit={ Array.isArray(submit) ? submit : [submit] }
+          />
       }
     </div>
   );
