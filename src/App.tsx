@@ -85,6 +85,7 @@ function App() {
               handleClick={ handleClick }
               formValues={ formValues }
               disabled={ !validate }
+              hidePassword={ hidePassword }
             />
             <section className="child-container">
               <Validation

@@ -1,15 +1,18 @@
 import React from 'react';
 import './Button.css';
+import PasswordIcon from '../PasswordIcon/PasswordIcon';
 
 type ButtonProps = {
   handleClick?: (event: React.MouseEvent) => void;
   text: string;
   disabled?: boolean;
   datatestid?: string;
+  hidePassword?: boolean;
 };
 
 function Button({ handleClick = undefined,
-  text, disabled = false, datatestid = undefined }: ButtonProps) {
+  text, disabled = false, datatestid = undefined, hidePassword = false }: ButtonProps) {
+  console.log(hidePassword);
   return (
     <button
       data-testid={ datatestid }
@@ -17,8 +20,9 @@ function Button({ handleClick = undefined,
       className="button-go"
       disabled={ disabled }
     >
-      { text }
-
+      {text.length === 0
+        ? <PasswordIcon hidePassword={ hidePassword } />
+        : text}
     </button>
   );
 }

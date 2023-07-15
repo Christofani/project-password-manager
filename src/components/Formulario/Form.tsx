@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '../ButtonGo/Button';
 import Input from '../Input/Input';
 
@@ -12,16 +12,30 @@ type FormValuesProps = {
 };
 type FormProps = {
   handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
-  handleClick: () => void;
+  handleClick: (event: React.MouseEvent) => void;
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   formValues: FormValuesProps;
   disabled: boolean;
+  hidePassword: boolean;
 };
 
 function Form(
-  { handleClick, handleChange, formValues, disabled = false, handleSubmit }: FormProps,
+  { handleClick,
+    handleChange,
+    formValues,
+    disabled = false,
+    handleSubmit,
+    hidePassword }: FormProps,
 ) {
+  const [showPassword, setShowPassword] = useState(hidePassword);
   const { name, login, senha, url } = formValues;
+
+  const handleShowPass = (event: React.MouseEvent) => {
+    event.preventDefault();
+    setShowPassword(!showPassword);
+    console.log(showPassword);
+  };
+
   return (
     <div className="div-container">
       <form onSubmit={ handleSubmit } className="form-container">
@@ -42,9 +56,15 @@ function Form(
         <Input
           id="senha"
           label="Senha"
-          type="password"
+          type={ !showPassword ? 'password' : 'text' }
           handleChange={ (event) => handleChange(event) }
           value={ senha }
+        />
+        <Button
+          handleClick={ (event) => handleShowPass(event) }
+          hidePassword={ showPassword }
+          datatestid="show-hide-form-password"
+          text=""
         />
         <Input
           id="url"
