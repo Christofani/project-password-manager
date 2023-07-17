@@ -13,18 +13,21 @@ function FormResults({ submit, handleDelete, hidePassword }: ResultProps) {
     <div>
       {submit.map((item) => (
         <div className="div-form" key={ item.id }>
-          <a target="_blank" href={ item.url } rel="noreferrer">{item.name}</a>
+          <section className="section-button-x">
+            <a target="_blank" href={ item.url } rel="noreferrer">{item.name}</a>
+            <Button
+              classname="btn-x"
+              datatestid="remove-btn"
+              text="X"
+              handleClick={ () => handleDelete(item.id) }
+            />
+          </section>
           <p>{item.login}</p>
           <p>
             { hidePassword
               ? '******'
               : item.senha}
           </p>
-          <Button
-            datatestid="remove-btn"
-            text="X"
-            handleClick={ () => handleDelete(item.id) }
-          />
         </div>
       ))}
     </div>

@@ -8,16 +8,18 @@ type ButtonProps = {
   disabled?: boolean;
   datatestid?: string;
   hidePassword?: boolean;
+  classname?: string;
 };
 
 function Button({ handleClick = undefined,
-  text, disabled = false, datatestid = undefined, hidePassword = false }: ButtonProps) {
+  text, disabled = false,
+  datatestid = undefined, hidePassword = false, classname = undefined }: ButtonProps) {
   return (
     <button
       data-testid={ datatestid }
       onClick={ handleClick }
-      className="button-go"
       disabled={ disabled }
+      className={ classname }
     >
       {text.length === 0
         ? <PasswordIcon hidePassword={ hidePassword } />

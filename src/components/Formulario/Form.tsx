@@ -40,6 +40,7 @@ function Form(
     <div className="div-container">
       <form onSubmit={ handleSubmit } className="form-container">
         <Input
+          classname="form-control form-control-sm"
           id="name"
           label="Nome do Serviço"
           type="text"
@@ -47,26 +48,32 @@ function Form(
           handleChange={ (event) => handleChange(event) }
         />
         <Input
+          classname="form-control form-control-sm"
           id="login"
           label="Login"
           type="text"
           handleChange={ (event) => handleChange(event) }
           value={ login }
         />
+        <section className="section-password">
+          <Input
+            classname="form-control form-control-sm"
+            id="senha"
+            label="Senha"
+            type={ !showPassword ? 'password' : 'text' }
+            handleChange={ (event) => handleChange(event) }
+            value={ senha }
+          />
+          <Button
+            handleClick={ (event) => handleShowPass(event) }
+            hidePassword={ showPassword }
+            datatestid="show-hide-form-password"
+            text=""
+            classname="button-view-password"
+          />
+        </section>
         <Input
-          id="senha"
-          label="Senha"
-          type={ !showPassword ? 'password' : 'text' }
-          handleChange={ (event) => handleChange(event) }
-          value={ senha }
-        />
-        <Button
-          handleClick={ (event) => handleShowPass(event) }
-          hidePassword={ showPassword }
-          datatestid="show-hide-form-password"
-          text=""
-        />
-        <Input
+          classname="form-control form-control-sm"
           id="url"
           label="URL"
           type="text"
@@ -74,10 +81,10 @@ function Form(
           value={ url }
         />
         <section className="section-container">
-          <Button text="Cadastrar" disabled={ disabled } />
+          <Button classname="button-check" text="Cadastrar" disabled={ disabled } />
         </section>
       </form>
-      <Button text="Cancelar" handleClick={ handleClick } />
+      <Button classname="button-cancel" text="Cancelar" handleClick={ handleClick } />
     </div>
   );
 }

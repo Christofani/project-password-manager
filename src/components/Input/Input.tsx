@@ -5,16 +5,21 @@ export type InputProps = {
   value?: string;
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   checked?: boolean;
+  role?:string
+  classname?: string
 };
 
 function Input({
-  label, id, type, value = undefined, handleChange, checked = undefined,
+  label, id,
+  classname = undefined,
+  type, role = undefined, value = undefined, handleChange, checked = undefined,
 }: InputProps) {
   return (
     <label htmlFor={ id }>
       { label }
       <input
-        className="form-control form-control-sm"
+        role={ role }
+        className={ classname }
         id={ id }
         type={ type }
         value={ value }

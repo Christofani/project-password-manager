@@ -116,6 +116,7 @@ function App() {
         : <Button
             text="Cadastrar Nova Senha"
             handleClick={ handleClick }
+            classname="button-cadastrar-nova-senha"
         />
         }
       {
@@ -128,13 +129,17 @@ function App() {
                 submit={ Array.isArray(submit) ? submit : [submit] }
                 hidePassword={ hidePassword }
               />
-              <Input
-                id="hide"
-                label="Esconder senhas"
-                type="checkbox"
-                checked={ hidePassword }
-                handleChange={ handlePassword }
-              />
+              <div className="form-check form-switch">
+                <Input
+                  id="flexSwitchCheckChecked"
+                  label="Esconder senhas"
+                  type="checkbox"
+                  checked={ hidePassword }
+                  handleChange={ handlePassword }
+                  role="switch"
+                  classname="form-check-input"
+                />
+              </div>
             </div>
           )
       }

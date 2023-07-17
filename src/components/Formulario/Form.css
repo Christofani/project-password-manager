@@ -28,3 +28,30 @@ label {
   justify-content: space-between;
 }
 
+.button-view-password {
+  background-color: #505050;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  width: 30px;
+}
+
+.button-check {
+  background-color: #5eca33;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  flex-grow: 1;
+  padding: 5px;
+}
+
+.button-cancel {
+  background-color: #e63e3e;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  flex-grow: 1;
+  padding: 5px;
+}
+
+
