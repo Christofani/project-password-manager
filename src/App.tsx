@@ -121,7 +121,7 @@ function App() {
         }
       {
         Array.isArray(submit) && submit.length === 0
-          ? <p className="parag">nenhuma senha cadastrada</p>
+          ? <p className="parag">Nenhuma senha cadastrada!</p>
           : (
             <div className="form-result-div">
               <FormResults
