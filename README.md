@@ -16,11 +16,12 @@
 
 Auxiliar pessoas que têm dificuldades em lembrar suas senhas de serviços online. Com o Gerenciador de Senhas, centralize e organize todas as informações de login em um só lugar, proporcionando mais segurança e praticidade no acesso aos serviços.
 
-## Tecnologias Utilizadas
-
-- HTML5
-- CSS3
-- JavaScript
+## Stacks utílizadas  
+<div>
+   <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" />
+   <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
+   <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
+</div>
 
 ## Como Utilizar
 
