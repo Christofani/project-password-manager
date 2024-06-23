@@ -26,7 +26,12 @@ Auxiliar pessoas que têm dificuldades em lembrar suas senhas de serviços onlin
 
 1. Clone este repositório em seu ambiente local.
 2. Abra o arquivo `index.html` em seu navegador preferido.
-3. Na página inicial do Gerenciador de Senhas, você terá opções para adicionar novos serviços, excluir serviços existentes e visualizar suas informações de login de forma organizada.
+3. Execute o comando `npm install` no terminal para instalar todas as dependências necessárias para o projeto.
+4. Após a instalação das dependências, execute o comando `npm run dev` no terminal para iniciar o projeto.
+5. Na página inicial do Gerenciador de Senhas, você terá opções para adicionar novos serviços, excluir serviços existentes e visualizar suas informações de login de forma organizada.
+
+Certifique-se de ter o Node.js e o npm instalados em seu sistema para poder usar esses comandos no terminal. Essas etapas garantem que o projeto esteja configurado corretamente e pronto para ser executado localmente em seu ambiente de desenvolvimento.
+
 
 ## Agradecimentos
 
