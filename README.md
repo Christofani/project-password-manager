@@ -38,4 +38,4 @@ Certifique-se de ter o Node.js e o npm instalados em seu sistema para poder usar
 
 Agradeço por utilizar o Gerenciador de Senhas e espero que esta ferramenta seja útil para simplificar o gerenciamento de suas senhas e melhorar sua experiência online. Em caso de dúvidas ou sugestões, sinta-se à vontade para entrar em contato.
 
-**Autor:** [Seu Nome ou Username](https://github.com/seu-username)
+**Autor:** [Seu Nome ou Username](https://github.com/christofanir)
